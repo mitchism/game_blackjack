@@ -5,7 +5,6 @@
 # 2. Functions
 # 3. Default variables 
 
-
 '''
 ----------- OBJECT CLASSES -----------
 '''
@@ -78,27 +77,6 @@ class Player:
     def withdraw(self,amt):
         self.bank -= amt
         
-    ''' 
-    # old version. removing 'score_alt' variable, pointless.
-    def score_check(self):
-        self.score_alt = 0
-        aces = []
-        other = []
-        for card in self.all_cards:
-            if card.rank == "Ace":
-                aces.append(card)
-            else:
-                other.append(card)
-        for card in other:
-            self.score_alt += card.value
-        for card in aces:
-            if self.score_alt <= 10:
-                self.score_alt += card.value
-            else:
-                self.score_alt += 1
-        self.score = self.score_alt
-        return self.score
-        '''
     def score_check(self):
         #self.score_alt = 0
         self.score = 0
@@ -173,31 +151,6 @@ def distribute_cards():
         print(f"\t\tPlayer has received {card_p}. \tCurrent score = {player.score}")
 
 
-def game_setup(mode='default',**kwargs):
-    # instantiate players
-    player = Player("player")
-    dealer = Player("dealer")
-
-    # instantiate card deck
-    new_deck = Deck()
-    new_deck.shuffle()
-
-    #  pre-game var defaults
-    game_on = True
-    round_num = 0
-    
-    if mode == 'default':    
-        return player,dealer,new_deck,game_on,round_num
-        #elif mode == 'diag':
-        #    return player,dealer,new_deck,game_on,round_num
-    else:
-        #for key,value in kwargs.items():
-            #if type(key) = object, 
-                #then apply key.value[0] as object.method, 
-                # key.value[0](key.value[1]) as object.method(argument)
-        game_on = False
-        return player,dealer,new_deck,game_on,round_num
-
 '''
 ----------- DEFAULTS -----------
 '''
@@ -216,12 +169,10 @@ h2 = '\n\t\t'
 h3 = '\n\t\t\t'
 
 
-#from blackjack_funcs_and_objectclasses import  Card,Deck,Player
-#from blackjack_funcs_and_objectclasses import  choose_bankroll,choose_bet,distribute_cards,game_setup
 ''' 
 # --- Pre-Game Setup ---
-__________________________
-'''
+__________________________'''
+
 # instantiate players
 player = Player("player")
 dealer = Player("dealer")
@@ -233,14 +184,10 @@ new_deck.shuffle()
 #  pre-game var defaults
 game_on = True
 round_num = 0
-'''
+
 ''' 
-#def launch_game(mode='default',**kwargs):
-    #player,dealer,new_deck,game_on,round_num = game_setup(mode='default',**kwargs)
-'''
- ---- Start Game ----
-________________________ 
-'''
+# ---- Start Game ----
+________________________ '''
 
 # ----- CHOOSE BANKROLL SIZE -----
 choose_bankroll()
@@ -423,13 +370,3 @@ while game_on:
     if test == 'quit':
         game_on = False
         break
-'''
-if __name__ == '__main__':
-    #mode = 'default'
-    #launch_game(mode)
-
-    #launch game
-    launch_game()
-else:
-    pass
-'''
